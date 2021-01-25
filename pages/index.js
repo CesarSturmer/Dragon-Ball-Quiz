@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import db from "../db.json";
-import Widget from '../src/components/Widget'
-import QuizBackground from '../src/components/QuizBackground'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
+import Widget from "../src/components/Widget";
+import QuizBackground from "../src/components/QuizBackground";
+import Footer from "../src/components/Footer";
+import GitHubCorner from "../src/components/GitHubCorner";
+import Head from "next/head";
 
 export const QuizContainer = styled.div`
   width: 100%;
@@ -16,29 +17,59 @@ export const QuizContainer = styled.div`
   }
 `;
 
-
-
 export default function Home() {
   return (
-    <QuizBackground backgroundImage={db.bg} property="og:image" content="path/to/image.jpg">
-      <QuizContainer>
-        <Widget>
-          <Widget.Header>
-            <h1>DraggonBall Z</h1>
-          </Widget.Header>
-          <Widget.Content>
-            <p>Loren</p>
-          </Widget.Content>
-        </Widget>
-        <Widget>
-          <Widget.Content>
-            <h1>DraggonBall Z</h1>
-            <p>Loren</p>
-          </Widget.Content>
-        </Widget>
-        <Footer />
-      </QuizContainer>
-      <GitHubCorner projectUrl="https://github.com"/>
-    </QuizBackground>
+    <>
+      <Head>
+        <title>Dragon Ball Quiz</title>
+        <meta name="title" content="Dragon Ball Quiz" />
+        <meta name="description" content="Quiz sobre Dragon Ball" />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://dragon-ball-quiz-two.vercel.app/"
+        />
+        <meta property="og:title" content="Dragon Ball Quiz" />
+        <meta
+          property="og:description"
+          content="Quiz sobre Dragon Ball"
+        />
+        <meta property="og:image" content={db.bg} />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={db.bg} />
+        <meta property="twitter:title" content="Dragon Ball Quiz" />
+        <meta
+          property="twitter:description"
+          content="Quiz sobre Dragon Ball"
+        />
+        <meta property="twitter:image" content={db.bg} />
+      </Head>
+      <QuizBackground
+        backgroundImage={db.bg}
+        property="og:image"
+        content="path/to/image.jpg"
+      >
+        <QuizContainer>
+          <Widget>
+            <Widget.Header>
+              <h1>DraggonBall Z</h1>
+            </Widget.Header>
+            <Widget.Content>
+              <p>Loren</p>
+            </Widget.Content>
+          </Widget>
+          <Widget>
+            <Widget.Content>
+              <h1>DraggonBall Z</h1>
+              <p>Loren</p>
+            </Widget.Content>
+          </Widget>
+          <Footer />
+        </QuizContainer>
+        <GitHubCorner projectUrl="https://github.com" />
+      </QuizBackground>
+    </>
   );
 }
